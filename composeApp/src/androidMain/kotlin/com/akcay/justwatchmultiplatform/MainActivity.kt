@@ -6,10 +6,13 @@ import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.akcay.justwatchmultiplatform.di.appModule
+import com.akcay.justwatchmultiplatform.di.networkModule
+import com.akcay.justwatchmultiplatform.di.viewModelModule
+import org.koin.core.context.startKoin
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,10 +25,12 @@ class MainActivity : ComponentActivity() {
 
         installSplashScreen()
 
+        startKoin {
+            modules(appModule)
+        }
+
         setContent {
-            MaterialTheme {
-                App()
-            }
+            App()
         }
     }
 }
