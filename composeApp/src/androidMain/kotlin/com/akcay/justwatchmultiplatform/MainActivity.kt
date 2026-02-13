@@ -9,12 +9,15 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.lifecycleScope
 import com.akcay.justwatchmultiplatform.di.appModule
-import com.akcay.justwatchmultiplatform.di.networkModule
-import com.akcay.justwatchmultiplatform.di.viewModelModule
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.koin.core.context.startKoin
 
 class MainActivity : ComponentActivity() {
+    var keepSplashScreen = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_JustWatch)
         enableEdgeToEdge(
@@ -23,7 +26,16 @@ class MainActivity : ComponentActivity() {
         )
         super.onCreate(savedInstanceState)
 
-        installSplashScreen()
+        lifecycleScope.launch {
+            delay(5000)
+            keepSplashScreen = false
+        }
+
+        installSplashScreen().apply {
+            this.setKeepOnScreenCondition {
+                keepSplashScreen
+            }
+        }
 
         startKoin {
             modules(appModule)

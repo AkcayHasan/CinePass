@@ -13,7 +13,13 @@ fun NavGraphBuilder.loginScreenNavGraph(navController: NavController) {
         startDestination = NavigableRoutes.Login.LoginScreen
     ) {
         composable<NavigableRoutes.Login.LoginScreen> {
-            LoginScreen()
+            LoginScreen(
+                onSignUpClick = {},
+                onSignInWithGoogleClick = {},
+                onSignInClick = {},
+                onForgotPasswordClick = {},
+                onGuestClick = {},
+            )
         }
         composable<NavigableRoutes.Login.RegisterScreen> {
 

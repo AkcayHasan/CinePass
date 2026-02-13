@@ -9,6 +9,6 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 @Preview
 fun App() {
     JWTheme {
-        JustWatchNavigation(startDestination = NavigableGraphs.Home)
+        JustWatchNavigation(startDestination = NavigableGraphs.Login)
     }
 }

@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.akcay.justwatchmultiplatform.theming.JWTheme
+import com.akcay.justwatchmultiplatform.theming.TextColors
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
@@ -39,7 +40,7 @@ fun ProgressIndicator(visible: Boolean, modifier: Modifier = Modifier) {
 fun ProgressAnimation(
     modifier: Modifier = Modifier,
     circleSize: Dp = 10.dp,
-    circleColor: Color = Color.Magenta,
+    circleColor: Color = TextColors.Accent,
     spaceBetween: Dp = 5.dp,
     distance: Dp = 10.dp,
 ) {
