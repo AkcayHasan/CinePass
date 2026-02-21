@@ -61,11 +61,11 @@ kotlin {
 }
 
 android {
-    namespace = "com.akcay.justwatchmultiplatform"
+    namespace = "com.akcay.cinepass"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "com.akcay.justwatchmultiplatform"
+        applicationId = "com.akcay.cinepass"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 2
