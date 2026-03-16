@@ -11,6 +11,7 @@ import com.akcay.cinepass.screens.register.RegisterScreen
 
 fun NavGraphBuilder.loginScreenNavGraph(
     onNavigateTo: OnNavigateTo,
+    navigateBack: () -> Unit,
 ) {
     navigation<NavigableGraphs.Login>(
         startDestination = NavigableRoutes.Login.LoginScreen
@@ -21,7 +22,11 @@ fun NavGraphBuilder.loginScreenNavGraph(
                     onNavigateTo(NavigableRoutes.Login.RegisterScreen, null)
                 },
                 onSignInWithGoogleClick = {},
-                onSignInClick = {},
+                onSignInClick = {
+                    onNavigateTo(NavigableGraphs.Home) {
+                        popUpTo(NavigableGraphs.Login) { inclusive = true }
+                    }
+                },
                 onForgotPasswordClick = {},
                 onGuestClick = {
                     onNavigateTo(NavigableGraphs.Home) {
@@ -32,9 +37,13 @@ fun NavGraphBuilder.loginScreenNavGraph(
         }
         composable<NavigableRoutes.Login.RegisterScreen> {
             RegisterScreen(
-                onSignUpClick = {},
+                navigateHome = {
+                    onNavigateTo(NavigableGraphs.Home) {
+                        popUpTo(NavigableGraphs.Login) { inclusive = true }
+                    }
+                },
                 onSignInWithGoogleClick = {},
-                onSignInClick = {},
+                onSignInClick = navigateBack,
                 onForgotPasswordClick = {},
                 onGuestClick = {
                     onNavigateTo(NavigableGraphs.Home) {

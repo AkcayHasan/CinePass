@@ -6,11 +6,11 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import justwatchmultiplatform.composeapp.generated.resources.Montserrat_Bold
-import justwatchmultiplatform.composeapp.generated.resources.Montserrat_Medium
-import justwatchmultiplatform.composeapp.generated.resources.Montserrat_Regular
-import justwatchmultiplatform.composeapp.generated.resources.Montserrat_SemiBold
-import justwatchmultiplatform.composeapp.generated.resources.Res
+import cinepass.composeapp.generated.resources.Montserrat_Bold
+import cinepass.composeapp.generated.resources.Montserrat_Medium
+import cinepass.composeapp.generated.resources.Montserrat_Regular
+import cinepass.composeapp.generated.resources.Montserrat_SemiBold
+import cinepass.composeapp.generated.resources.Res
 import org.jetbrains.compose.resources.Font
 
 val Montserrat @Composable get() = FontFamily(

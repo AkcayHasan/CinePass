@@ -6,6 +6,8 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.kotlinx.serialization)
+    alias(libs.plugins.googleServices)
+    kotlin("native.cocoapods")
 }
 
 kotlin {
@@ -15,13 +17,23 @@ kotlin {
         }
     }
     
-    listOf(
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach { iosTarget ->
-        iosTarget.binaries.framework {
+    iosArm64()
+    iosSimulatorArm64()
+
+    cocoapods {
+        summary = "CinePass Shared Module"
+        homepage = "https://github.com/akcay/cinepass"
+        version = "1.0"
+        ios.deploymentTarget = "16.0"
+        framework {
             baseName = "ComposeApp"
             isStatic = true
+        }
+        pod("FirebaseAuth") {
+            version = "~> 11.0"
+        }
+        pod("FirebaseFirestore") {
+            version = "~> 11.0"
         }
     }
 
@@ -33,6 +45,8 @@ kotlin {
             implementation(libs.ktor.okhttp)
             implementation(libs.splash)
             implementation(libs.koin.android)
+            implementation(libs.firebase.auth)
+            implementation(libs.firebase.firestore)
         }
         commonMain.dependencies {
             implementation(compose.runtime)

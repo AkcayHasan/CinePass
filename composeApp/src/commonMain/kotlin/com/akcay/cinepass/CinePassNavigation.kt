@@ -41,7 +41,9 @@ fun CinePassNavigation(
                 navController.navigateTo(
                     destination,
                     optionsBuilder?.let { navOptions(it) })
-            })
+            },
+            navigateBack = { navController.popBackStack() }
+        )
 
         composable<NavigableRoutes.Genre> {
             GenreScreen()

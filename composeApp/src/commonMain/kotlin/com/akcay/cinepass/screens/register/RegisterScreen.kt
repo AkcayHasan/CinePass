@@ -14,6 +14,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,9 +29,9 @@ import com.akcay.cinepass.components.JWTextButton
 import com.akcay.cinepass.components.JWTextField
 import com.akcay.cinepass.theming.JWTheme
 import com.akcay.cinepass.theming.TextColors
-import justwatchmultiplatform.composeapp.generated.resources.Res
-import justwatchmultiplatform.composeapp.generated.resources.ic_google
-import justwatchmultiplatform.composeapp.generated.resources.ic_logo
+import cinepass.composeapp.generated.resources.Res
+import cinepass.composeapp.generated.resources.ic_google
+import cinepass.composeapp.generated.resources.ic_logo
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
@@ -38,7 +39,7 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 fun RegisterScreen(
     viewModel: RegisterViewModel = koinViewModel(),
-    onSignUpClick: () -> Unit,
+    navigateHome: () -> Unit,
     onSignInWithGoogleClick: () -> Unit,
     onSignInClick: () -> Unit,
     onForgotPasswordClick: () -> Unit,
@@ -46,12 +47,20 @@ fun RegisterScreen(
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
+    LaunchedEffect(Unit) {
+        viewModel.events.collect { event ->
+            when (event) {
+                is RegisterViewModelEvent.NavigateToHome -> navigateHome()
+            }
+        }
+    }
+
     RegisterScreenContent(
         uiState = uiState,
         onEmailChange = viewModel::onEmailChanged,
         onPasswordChange = viewModel::onPasswordChanged,
         onConfirmPasswordChange = viewModel::onConfirmPasswordChanged,
-        onSignUpClick = onSignUpClick,
+        onSignUpClick = viewModel::onSignUpClick,
         onSignInWithGoogleClick = onSignInWithGoogleClick,
         onSignInClick = onSignInClick,
         onForgotPasswordClick = onForgotPasswordClick,
@@ -60,7 +69,7 @@ fun RegisterScreen(
 }
 
 @Composable
-fun RegisterScreenContent(
+private fun RegisterScreenContent(
     uiState: RegisterUiState,
     onEmailChange: (String) -> Unit,
     onPasswordChange: (String) -> Unit,
@@ -113,14 +122,24 @@ fun RegisterScreenContent(
             )
             JWPasswordTextField(
                 modifier = Modifier.padding(top = 14.dp),
-                value = uiState.password,
+                value = uiState.confirmPassword,
                 label = "Confirm Password",
-                onValueChange = onPasswordChange,
+                onValueChange = onConfirmPasswordChange,
             )
+            if (uiState.errorMessage != null) {
+                Text(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 8.dp),
+                    text = uiState.errorMessage,
+                    style = MaterialTheme.typography.bodySmall.copy(color = MaterialTheme.colorScheme.error),
+                )
+            }
             NavigateButtons(
                 modifier = Modifier.padding(top = 20.dp),
+                isLoading = uiState.isLoading,
                 onSignUpClick = onSignUpClick,
-                onSignInWithGoogleClick = {},
+                onSignInWithGoogleClick = onSignInWithGoogleClick,
             )
             Spacer(modifier = Modifier.weight(1f))
             Row(
@@ -132,15 +151,13 @@ fun RegisterScreenContent(
                     style = MaterialTheme.typography.bodyMedium,
                 )
                 JWTextButton(
-                    modifier = Modifier
-                        .padding(start = 4.dp),
+                    modifier = Modifier.padding(start = 4.dp),
                     text = "Log In",
                     onClick = onSignInClick,
                 )
             }
             JWTextButton(
-                modifier = Modifier
-                    .padding(top = 20.dp, bottom = 50.dp),
+                modifier = Modifier.padding(top = 20.dp, bottom = 50.dp),
                 text = "Login as Guest",
                 onClick = onGuestClick,
             )
@@ -151,6 +168,7 @@ fun RegisterScreenContent(
 @Composable
 private fun NavigateButtons(
     modifier: Modifier = Modifier,
+    isLoading: Boolean = false,
     onSignUpClick: () -> Unit,
     onSignInWithGoogleClick: () -> Unit,
 ) {
@@ -161,6 +179,7 @@ private fun NavigateButtons(
         JWPrimaryButton(
             modifier = Modifier.height(56.dp),
             text = "Sign Up",
+            isLoading = isLoading,
             onClick = onSignUpClick,
         )
         Row(
@@ -183,9 +202,7 @@ private fun NavigateButtons(
 
 @Composable
 @Preview
-fun RegisterScreenPreview(
-    modifier: Modifier = Modifier,
-) {
+private fun RegisterScreenPreview() {
     JWTheme {
         RegisterScreenContent(
             uiState = RegisterUiState(),

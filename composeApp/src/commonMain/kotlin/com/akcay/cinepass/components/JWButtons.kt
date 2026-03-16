@@ -6,9 +6,11 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -21,8 +23,8 @@ import androidx.compose.ui.unit.dp
 import com.akcay.cinepass.theming.Brand
 import com.akcay.cinepass.theming.JWTheme
 import com.akcay.cinepass.theming.TextColors
-import justwatchmultiplatform.composeapp.generated.resources.Res
-import justwatchmultiplatform.composeapp.generated.resources.ic_google
+import cinepass.composeapp.generated.resources.Res
+import cinepass.composeapp.generated.resources.ic_google
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -32,18 +34,28 @@ fun JWPrimaryButton(
     text: String,
     onClick: () -> Unit,
     backgroundColor: Color = Brand.Button,
+    isLoading: Boolean = false,
     modifier: Modifier = Modifier,
 ) {
     Button(
         shape = RoundedCornerShape(8.dp),
         onClick = onClick,
+        enabled = !isLoading,
         modifier = modifier.fillMaxWidth(),
         colors = ButtonDefaults.buttonColors(containerColor = backgroundColor),
     ) {
-        Text(
-            text = text,
-            style = MaterialTheme.typography.bodyMedium.copy(color = Color.White),
-        )
+        if (isLoading) {
+            CircularProgressIndicator(
+                modifier = Modifier.size(20.dp),
+                color = Color.White,
+                strokeWidth = 2.dp,
+            )
+        } else {
+            Text(
+                text = text,
+                style = MaterialTheme.typography.bodyMedium.copy(color = Color.White),
+            )
+        }
     }
 }
 
