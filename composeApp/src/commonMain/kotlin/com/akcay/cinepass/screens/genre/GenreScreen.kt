@@ -47,11 +47,12 @@ fun GenreScreenContent(
         modifier = modifier.fillMaxSize(),
     ) {
         Column(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(it),
         ) {
             Column(
                 modifier = Modifier
-                    .padding(it)
                     .padding(horizontal = 20.dp),
             ) {
                 Text(

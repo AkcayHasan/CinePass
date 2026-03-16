@@ -1,3 +1,3 @@
 package com.akcay.cinepass.di
 
-val appModule = listOf(networkModule, viewModelModule, repositoryModule, serviceModule)
+val appModule = listOf(networkModule, authModule, viewModelModule, repositoryModule, serviceModule)

@@ -20,8 +20,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.akcay.cinepass.navigation.navgraphs.homeScreenNavGraph
-import justwatchmultiplatform.composeapp.generated.resources.Res
-import justwatchmultiplatform.composeapp.generated.resources.ic_home
+import cinepass.composeapp.generated.resources.Res
+import cinepass.composeapp.generated.resources.ic_home
 import kotlinx.serialization.Serializable
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource

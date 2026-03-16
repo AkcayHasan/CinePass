@@ -25,8 +25,8 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.akcay.cinepass.theming.TextColors
-import justwatchmultiplatform.composeapp.generated.resources.Res
-import justwatchmultiplatform.composeapp.generated.resources.ic_eye_close
+import cinepass.composeapp.generated.resources.Res
+import cinepass.composeapp.generated.resources.ic_eye_close
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 

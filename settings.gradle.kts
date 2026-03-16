@@ -1,4 +1,4 @@
-rootProject.name = "JustWatchMultiplatform"
+rootProject.name = "CinePass"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {

@@ -6,8 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		45DEA3D203FB4363FB3FD90E /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D820D6BBD9D5B8B89D1EEF26 /* Pods_iosApp.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
-		C5E2473FD81EA602F8B0C0DA /* JustWatchMultiplatform.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustWatchMultiplatform.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0AA028671F8390E45AC8A6F4 /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
+		C5E2473FD81EA602F8B0C0DA /* CinePass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CinePass.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D820D6BBD9D5B8B89D1EEF26 /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE9F5BFAC1F5E025F813557D /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -23,6 +30,8 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		59DB53179D61B81F5698B9C0 /* Configuration */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
 			path = Configuration;
 			sourceTree = "<group>";
 		};
@@ -41,25 +50,45 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45DEA3D203FB4363FB3FD90E /* Pods_iosApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A990B22401F1923E5B70B58A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D820D6BBD9D5B8B89D1EEF26 /* Pods_iosApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B4D30C121391B992FA2E63A4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DE9F5BFAC1F5E025F813557D /* Pods-iosApp.debug.xcconfig */,
+				0AA028671F8390E45AC8A6F4 /* Pods-iosApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		C0128EB62CAB61557D55AEDC = {
 			isa = PBXGroup;
 			children = (
 				59DB53179D61B81F5698B9C0 /* Configuration */,
 				A0218B43806EC01F8DBE4642 /* iosApp */,
 				ED85FCAD4FDA29FB78279042 /* Products */,
+				B4D30C121391B992FA2E63A4 /* Pods */,
+				A990B22401F1923E5B70B58A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		ED85FCAD4FDA29FB78279042 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C5E2473FD81EA602F8B0C0DA /* JustWatchMultiplatform.app */,
+				C5E2473FD81EA602F8B0C0DA /* CinePass.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -71,10 +100,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F5B63E33A0ACB79B84D3716B /* Build configuration list for PBXNativeTarget "iosApp" */;
 			buildPhases = (
-				0DC48055135F9E1FDCA499C3 /* Compile Kotlin Framework */,
+				73346A44199F425CDB920B41 /* [CP] Check Pods Manifest.lock */,
 				C4C1D5B79008561028BE3E50 /* Sources */,
 				BC8062D4638B2747C5DF1D32 /* Frameworks */,
 				D0BF45B79CEF28DF8BA22A89 /* Resources */,
+				C5AD328CA7D5E53AED42BFB3 /* [CP] Embed Pods Frameworks */,
+				44E7BF39170EAEF79A1E8B46 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -84,10 +115,8 @@
 				A0218B43806EC01F8DBE4642 /* iosApp */,
 			);
 			name = iosApp;
-			packageProductDependencies = (
-			);
 			productName = iosApp;
-			productReference = C5E2473FD81EA602F8B0C0DA /* JustWatchMultiplatform.app */;
+			productReference = C5E2473FD81EA602F8B0C0DA /* CinePass.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -135,24 +164,61 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0DC48055135F9E1FDCA499C3 /* Compile Kotlin Framework */ = {
+		44E7BF39170EAEF79A1E8B46 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iosApp/Pods-iosApp-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iosApp/Pods-iosApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iosApp/Pods-iosApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		73346A44199F425CDB920B41 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "Compile Kotlin Framework";
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iosApp-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"YES\" = \"$OVERRIDE_KOTLIN_BUILD_IDE_SUPPORTED\" ]; then\n  echo \"Skipping Gradle build task invocation due to OVERRIDE_KOTLIN_BUILD_IDE_SUPPORTED environment variable set to \\\"YES\\\"\"\n  exit 0\nfi\ncd \"$SRCROOT/..\"\n./gradlew :composeApp:embedAndSignAppleFrameworkForXcode\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5AD328CA7D5E53AED42BFB3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iosApp/Pods-iosApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iosApp/Pods-iosApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iosApp/Pods-iosApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -169,6 +235,7 @@
 /* Begin XCBuildConfiguration section */
 		0765402EBC849B9C1DCFC989 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AA028671F8390E45AC8A6F4 /* Pods-iosApp.release.xcconfig */;
 			buildSettings = {
 				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -196,6 +263,7 @@
 		};
 		4087D923794AC857C92B1730 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE9F5BFAC1F5E025F813557D /* Pods-iosApp.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
